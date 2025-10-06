@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 10
   gravity: 9.81
-  speedZ: 10
+  speedZ: 10000
   accelerationZ: 8
   speedX: 10
   speedJump: 10
