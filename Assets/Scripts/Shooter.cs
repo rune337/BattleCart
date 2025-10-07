@@ -7,7 +7,7 @@ public class Shooter : MonoBehaviour
     Transform player; //プレイヤーのTransform情報
     GameObject gate; //プレイヤーについているGateオブジェクトの情報
     public float shootSpeed = 100f; //投げた時の力
-    public float upSpeed = 8f;　//投げた時の上向きの力
+    public float upSpeed = 8f; //投げた時の上向きの力
 
     bool possibleShoot; //ショット可能フラグ
 
@@ -16,8 +16,12 @@ public class Shooter : MonoBehaviour
 
     Camera cam; //カメラ情報の取得
 
+    PlayerController playerCnt; //他オブジェクトについているPlayerControllerスクリプト
+
     void Start()
     {
+        playerCnt = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
         //時間差でシュート可能にする
         Invoke("ShootEnabled", 0.5f);
 
@@ -34,7 +38,7 @@ public class Shooter : MonoBehaviour
     {
         if (GameManager.gameState != GameState.playing) return;
 
-        if (Input.GetMouseButtonDown(0))　//もしも左クリックがおされたら
+        if (Input.GetMouseButtonDown(0)) //もしも左クリックがおされたら
         {
             if (possibleShoot) Shot(); //フラグがONならショットするメソッド
         }
@@ -51,6 +55,9 @@ public class Shooter : MonoBehaviour
     {
         //プレイヤーが消滅していなければ
         if (player == null || shotPower <= 0) return;
+
+        //ショット音を鳴らす
+        playerCnt.SEPlay(SEType.Shot); 
 
         //プレイヤーの位置にBulletを生成
         GameObject obj = Instantiate(bulletPrefab, gate.transform.position, Quaternion.identity);
