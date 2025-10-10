@@ -108,3 +108,22 @@ GameObject GenerateStage(int chipIndex)
         Destroy(oldStage);
     }
 ```
+
+* Shooter.cs  
+カメラの向きにあわせて弾プレハブがシュートされる  
+残弾を決めて、コルーチンで球数が自動回復するようにした  
+```C#
+//shotPowerを消費
+void ConsumePower()
+{
+    shotPower--; //消費
+    StartCoroutine(RecoverPower()); //回復コルーチン
+}
+//回復コルーチン
+IEnumerator RecoverPower()
+{
+    //RecoverySeconds秒待つ
+    yield return new WaitForSeconds(recoverySeconds);
+    shotPower++; //１つ回復
+}
+```
