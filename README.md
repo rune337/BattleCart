@@ -37,3 +37,20 @@ SEをつけて臨場感がでるようにした
 爽快感とスリルが両立するようにして、繰り返し最高記録を塗り替えたくなるようなバランス調整をした
 * 技術的な調整：
 カメラの角度を変えるとシュートされる弾もカメラの角度にあわせて飛んでいくように調整するRotationの調整が大変でした
+
+### スクリプトの詳細
+* PlayerController.cs  
+CharactorControllerコンポーネントのMoveメソッドを用いて、自動走行する
+ダメージをくらった際に一定時間点滅処理するメソッド(Blinking)を用いた
+```C#
+   //点滅処理
+   void Blinking()
+   {
+       //その時のゲーム進行時間で正か負かの値を算出
+       float val = Mathf.Sin(Time.time * 50);
+       //正の周期なら表示
+       if (val >= 0) body.SetActive(true);
+       //負の周期なら非表示
+       else body.SetActive(false);
+   }
+```
