@@ -54,3 +54,31 @@ CharactorControllerコンポーネントのMoveメソッドを用いて、自動
        else body.SetActive(false);
    }
 ```
+
+
+* CameraRotation.cs  
+マウスの動きに連動してカメラの視点がかわるように実装  
+最大・最小の視野角を決めてそこで視点が留まるようにClampメソッドを活用した  
+```C#
+void Update()
+{
+    //プレイ状態でなければ動かせないようにしておく
+    if (GameManager.gameState != GameState.playing) return;
+    //マウスの動きを取得しておく
+    float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+    float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+    //その時のマウスの動きに応じた数値（横方向）
+    horizontalRotation += mouseX;
+    //最大・最小に絞り込みはされる
+    horizontalRotation = Mathf.Clamp(horizontalRotation, minHorizontalAngle, maxHorizontalAngle);
+    //その時のマウスの動きに応じた数値（縦方向）
+    verticalRotation -= mouseY;
+    //最大・最小に絞り込みはされる
+    verticalRotation = Mathf.Clamp(verticalRotation, minVerticalAngle, maxVerticalAngle);
+    //横の角度の微調整
+    //基準としている角度に対してmin～maxの間でのマウス移動の積み重ね
+    float yRotation = initialY + horizontalRotation;
+    //そのフレームにおけるカメラの角度を最終決定
+    transform.rotation = Quaternion.Euler(verticalRotation, yRotation, 0);
+}
+```
