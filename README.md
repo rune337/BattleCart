@@ -8,3 +8,21 @@
 [ゲームのサンプルプレイ](https://rune337.github.io/BattleCart_web/)
 
 ![ゲーム画面](readmeImg/batttlecart_portfolio.jpg)
+
+
+## ゲームプレイ方法
+[ゲームのサンプルプレイ](https://dyna-rise.github.io/BattleCart_web/)
+![ゲーム画面](readmeImg/battlecart_portfolio.jpg)
+  
+### 操作方法
+* Aキー（左キー）：レーンを左に移動
+* Dキー（右キー）：レーンを右に移動
+* スペースキー：ジャンプ
+* マウス操作：視点を回転
+* マウス左クリック：シュート
+### ゲームルール
+* 敵とぶつかってPlayerのHPがゼロになったらゲームオーバー
+* 敵はシュートされた球で破壊できる
+* 弾の残数は限りがある（自動回復）
+* 走行距離が記録されるので、最高記録の塗り替えを目指す
+* タイトルで記録をリセット可能
