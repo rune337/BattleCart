@@ -19,12 +19,25 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
      controller = GetComponent<CharacterController>();
+
+    //空中車
+    if (!useGravity)
+        {
+            //空中にいるときは時間経過で消滅
+            Destroy(gameObject, 20);
+        }
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        //カメラより後ろに行ったら削除
+        //if(transform.position.z < Camera.main.transform.position.z)
+        //{
+            //Destroy(gameObject);
+        //}
+
         //ステージ外に落ちたら消滅
         if(transform.position.y <= deletePosY)
         {
