@@ -82,3 +82,29 @@ void Update()
     transform.rotation = Quaternion.Euler(verticalRotation, yRotation, 0);
 }
 ```
+
+* StageGenerator.cs  
+プレハブに登録したステージオブジェクトが変数に設定した値で自動生成される  
+Playerの位置に応じて新しいステージが生成されると古い物から削除されてヒエラルキーを圧迫しないよう工夫した  
+```C#
+// 指定のインデックス位置にStageオブジェクトをランダムに生成
+GameObject GenerateStage(int chipIndex)
+{
+    int nextStageChip = Random.Range(0, stageChips.Length);
+    GameObject stageObject = Instantiate(
+        stageChips[nextStageChip],
+        new Vector3(0, 0, chipIndex * StageChipSize),
+        Quaternion.identity
+    );
+    return stageObject;
+}
+```
+```C#
+    // 一番古いステージを削除
+    void DestroyOldestStage()
+    {
+        GameObject oldStage = generatedStageList[0];
+        generatedStageList.RemoveAt(0);
+        Destroy(oldStage);
+    }
+```
