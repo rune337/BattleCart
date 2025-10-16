@@ -1,4 +1,7 @@
 # BattleCart
+[ゲームのサンプルプレイ](https://rune337.github.io/BattleCart_web/)
+![ゲーム画面](readmeImg/batttlecart_portfolio.jpg)
+
 
 ## 訓練校で学習する3作目の3D作品
 * playerの動作
@@ -12,10 +15,6 @@
   
 どんどんスピードが速くなるので後半にいけばいくほど一気に記録が伸びる爽快感と
 一瞬でクラッシュしてしまうスリルが癖になるように作りました。
-
-## ゲームプレイ方法
-[ゲームのサンプルプレイ](https://rune337.github.io/BattleCart_web/)
-![ゲーム画面](readmeImg/batttlecart_portfolio.jpg)
   
 ### 操作方法
 * Aキー（左キー）：レーンを左に移動
